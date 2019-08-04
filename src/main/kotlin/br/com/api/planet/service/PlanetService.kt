@@ -6,9 +6,9 @@ import br.com.api.planet.infrastructure.integration.StarWarsPlanetClient
 import br.com.api.planet.infrastructure.repository.PlanetRepository
 import br.com.api.planet.infrastructure.repository.entity.PlanetEntity
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.stereotype.Service
 import java.lang.Exception
-import java.util.*
 
 @Service
 class PlanetService {
@@ -30,6 +30,7 @@ class PlanetService {
         return planetRepository.save(planetEntity).planetId
     }
 
+    @Cacheable("planets")
     fun getSwapApiPlanets(): List<Planet> {
         var pageNumber = 1
         var response = starWarsPlanetClient.getPlanets(pageNumber)

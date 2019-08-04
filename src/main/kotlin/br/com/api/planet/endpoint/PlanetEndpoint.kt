@@ -6,13 +6,14 @@ import br.com.api.planet.endpoint.resource.request.PlanetRequest
 import br.com.api.planet.endpoint.resource.response.PlanetApiResponse
 import br.com.api.planet.service.PlanetService
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.cache.annotation.EnableCaching
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.util.*
 
 @RestController
 @RequestMapping("/v1/star_wars")
+@EnableCaching
 class PlanetEndpoint {
 
     @Autowired
